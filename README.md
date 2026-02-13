@@ -1,70 +1,178 @@
-# Getting Started with Create React App
+# Ahmad Ayaz - Portfolio Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive portfolio website built with React, showcasing my skills, projects, and experience as a MERN Stack Developer.
 
-## Available Scripts
+## 🚀 Features
 
-In the project directory, you can run:
+- ✨ **Modern Design**: Clean and professional UI with smooth animations
+- 🎨 **Custom Cursor**: Interactive custom cursor for enhanced UX
+- 📱 **Fully Responsive**: Works seamlessly on all devices
+- 🌙 **Dark Theme**: Eye-friendly dark color scheme
+- ⚡ **Fast Performance**: Optimized for speed and efficiency
+- 🎭 **Smooth Animations**: CSS and React-based animations
+- 📧 **Contact Form**: Functional contact form for inquiries
+- 🔍 **SEO Optimized**: Meta tags and semantic HTML
 
-### `npm start`
+## 🛠️ Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Frontend
+- **React.js** - UI Library
+- **React Router** - Navigation
+- **CSS3** - Styling with animations
+- **HTML** - Strucure
+- **javascript** - Engine
+- **Google Fonts** - Typography (Syne & JetBrains Mono)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Tools
+- **Git** - Version control
+- **npm/yarn** - Package management
+- **VS Code** - Development environment
 
-### `npm test`
+## 📦 Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository:
+```bash
+git clone https://github.com/ahmadayaz/ahmadayaz-portfolio.git
+cd ahmadayaz-portfolio
+```
 
-### `npm run build`
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Start the development server:
+```bash
+npm start
+# or
+yarn start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 📁 Project Structure
 
-### `npm run eject`
+```
+portfolio/
+├── public/
+│   └── index.html
+├── src/
+│   ├── components/
+│   │   ├── Navbar.jsx
+│   │   ├── Navbar.css
+│   │   ├── Footer.jsx
+│   │   ├── Footer.css
+│   │   ├── CustomCursor.jsx
+│   │   ├── CustomCursor.css
+│   │   └── ScrollToTop.jsx
+│   ├── pages/
+│   │   ├── Home.jsx
+│   │   ├── Home.css
+│   │   ├── About.jsx
+│   │   ├── About.css
+│   │   ├── Projects.jsx
+│   │   ├── Projects.css
+│   │   ├── Contact.jsx
+│   │   └── Contact.css
+│   ├── App.jsx
+│   ├── App.css
+│   ├── index.js
+│   └── index.css
+├── package.json
+└── README.md
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🎨 Customization
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Colors
+Edit CSS variables in `index.css`:
+```css
+:root {
+  --primary: #00ff88;
+  --secondary: #00d9ff;
+  --accent: #ff3366;
+  --bg-dark: #0a0e27;
+  --bg-darker: #050816;
+  /* ... */
+}
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Content
+- **Home**:  `pages/Home.jsx` 
+- **About**:  `pages/About.jsx` 
+- **Projects**:  `pages/Projects.jsx`
+- **Contact**:  `pages/Contact.jsx` 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## 📱 Pages
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Home
+- Hero section with animated name
+- Typing effect for role
+- Code window preview
+- Tech stack showcase
+- Call-to-action buttons
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### About
+- Personal introduction
+- Quick facts cards
+- Profile card with stats
+- Tabbed sections for:
+  - Skills (Frontend, Backend, Tools)
+  - Experience timeline
+  - Education timeline
 
-### Code Splitting
+### Projects
+- Featured projects section
+- Filterable project grid
+- Project cards with:
+  - Description
+  - Technologies used
+  - GitHub and live demo links
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Contact
+- Contact information cards
+- Social media links
+- Contact form with validation
+- Success/error message handling
 
-### Analyzing the Bundle Size
+## 🚀 Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Build for production:
+```bash
+npm run build
+# or
+yarn build
+```
 
-### Making a Progressive Web App
+### Deploy to:
+- **Vercel**: `vercel deploy`
+- **Netlify**: Drag and drop `build` folder
+- **GitHub Pages**: Use `gh-pages` package
+- **Heroku**: Use buildpack for React
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 📄 License
 
-### Advanced Configuration
+This project is open source and available under the [MIT License](LICENSE).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 👤 Author
 
-### Deployment
+**Ahmad Ayaz**
+- GitHub: [@ahmadayaz](https://github.com/ahmadayaz2022)
+- LinkedIn: [Ahmad Ayaz](http://linkedin.com/in/ahmadayaz99)
+- Email: ahmadayaz2022@gmail.com
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 🙏 Acknowledgments
 
-### `npm run build` fails to minify
+- Design inspiration from various portfolio websites
+- Icons from SVG libraries
+- Fonts from Google Fonts
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+Made with ❤️ by Ahmad Ayaz
+```
+
+Feel free to customize this portfolio and make it your own!
