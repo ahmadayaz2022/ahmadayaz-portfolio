@@ -23,30 +23,25 @@ function Projects() {
       <Navbar />
 
       <div className="max-w-7xl mx-auto px-6 py-16">
-        <h1 className="text-4xl font-bold mb-10 text-center">
-          My Projects
-        </h1>
+        <h1 className="text-4xl font-bold mb-10 text-center">My Projects</h1>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
             <div
               key={project._id}
               className="bg-slate-900 rounded-xl overflow-hidden shadow-lg"
+              className="glass rounded-3xl overflow-hidden hover:-translate-y-2 transition duration-300"
             >
               <img
                 src={project.image}
                 alt={project.title}
-                className="h-52 w-full object-cover"
+                className="h-60 w-full object-cover"
               />
 
               <div className="p-5">
-                <h2 className="text-2xl font-bold mb-3">
-                  {project.title}
-                </h2>
+                <h2 className="text-2xl font-bold mb-3">{project.title}</h2>
 
-                <p className="text-gray-300 mb-4">
-                  {project.description}
-                </p>
+                <p className="text-gray-300 mb-4">{project.description}</p>
 
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech, index) => (

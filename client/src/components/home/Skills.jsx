@@ -1,43 +1,43 @@
-const skills = {
-  Frontend: ["HTML", "CSS", "JavaScript", "React.js", "Tailwind CSS"],
-
-  Backend: ["Node.js", "Express.js", "Python", "Django", "Flask"],
-
-  Database: ["MongoDB", "SQL"],
-
-  Tools: ["Git", "GitHub", "Postman", "VS Code"],
-
-  AI: ["ChatGPT", "Claude", "Gemini", "Deepseek"],
-};
+const skills = [
+  "HTML",
+  "CSS",
+  "JavaScript",
+  "React.js",
+  "Node.js",
+  "Express.js",
+  "MongoDB",
+  "Python",
+  "Tailwind CSS",
+  "Git",
+  "GitHub",
+  "REST APIs",
+  "Postman",
+  "AI Tools",
+];
 
 function Skills() {
   return (
-    <section className="bg-slate-950 text-white py-24 px-6">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-16 text-cyan-400">
-          Technical Skills
-        </h2>
+    <section className="section-padding">
+      <div className="container-custom">
+        <div className="text-center mb-20">
+          <p className="text-cyan-400 mb-4">
+            MY SKILLS
+          </p>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {Object.entries(skills).map(([category, items]) => (
+          <h2 className="text-5xl font-bold">
+            Technologies I Work With
+          </h2>
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-5">
+          {skills.map((skill, index) => (
             <div
-              key={category}
-              className="bg-slate-900 p-8 rounded-2xl shadow-lg"
+              key={index}
+              className="glass px-8 py-4 rounded-2xl hover:scale-105 transition duration-300"
             >
-              <h3 className="text-2xl font-bold mb-6 text-cyan-400">
-                {category}
-              </h3>
-
-              <div className="flex flex-wrap gap-3">
-                {items.map((skill, index) => (
-                  <span
-                    key={index}
-                    className="bg-cyan-500 px-4 py-2 rounded-full text-sm"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
+              <p className="text-lg font-semibold">
+                {skill}
+              </p>
             </div>
           ))}
         </div>
