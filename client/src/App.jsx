@@ -1,12 +1,27 @@
-import { useState } from 'react'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
 
+import "./index.css";
 
-function App() {
-  return (
-    <div>
-      <h1>MERN Portfolio Website</h1>
-    </div>
-  );
-}
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Projects from "./pages/Projects";
+import Contact from "./pages/Contact";
 
-export default App;
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </BrowserRouter>
+  </React.StrictMode>
+);

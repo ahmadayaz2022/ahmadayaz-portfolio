@@ -1,9 +1,9 @@
-function Contact() {
+function Login() {
   return (
     <div className="text-center mt-20 text-3xl">
-      Contact Page
+      Admin Login Page
     </div>
   );
 }
 
-export default Contact;
+export default Login;
