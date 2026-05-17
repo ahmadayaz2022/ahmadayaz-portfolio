@@ -116,18 +116,7 @@ Expected output:
 ## 📚 Creating Your First Admin Account
 
 ### Step 1: Navigate to Signup
-1. Open http://localhost:3000/signup
-2. Fill in the registration form:
-   - **Name**: Your name
-   - **Email**: Your email
-   - **Password**: Min 6 chars, with uppercase, lowercase, number
-   - **Confirm Password**: Must match
-
 ### Step 2: Create Account
-1. Click "Create Account"
-2. You'll be automatically logged in
-3. Redirected to dashboard
-
 ---
 
 ## 🎯 First Steps After Setup
