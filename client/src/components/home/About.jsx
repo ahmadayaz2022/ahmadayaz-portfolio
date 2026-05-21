@@ -1,70 +1,49 @@
-import { motion } from "framer-motion";
-
 function About() {
   return (
-    <section className="section-padding">
-      <div className="container-custom grid md:grid-cols-2 gap-20 items-center">
-        <motion.div
-          initial={{ opacity: 0, x: -60 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <div className="glass p-3 rounded-[30px]">
+    <section id="about" className="py-24 px-6 bg-slate-900">
+
+      <div className="max-w-6xl mx-auto">
+
+        <h1 className="text-5xl font-bold text-center mb-16 text-cyan-400">
+          About Me
+        </h1>
+
+        <div className="grid md:grid-cols-2 gap-10 items-center">
+
+          <div>
             <img
               src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e"
-              alt="Profile"
-              className="rounded-[24px]"
+              alt="about"
+              className="rounded-2xl"
             />
           </div>
-        </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, x: 60 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <p className="text-cyan-400 mb-4">
-            ABOUT ME
-          </p>
+          <div>
 
-          <h2 className="text-5xl font-bold mb-8 leading-tight">
-            Passionate About Building
-            <span className="gradient-text">
-              {" "}Modern Web Apps
-            </span>
-          </h2>
+            <p className="text-gray-300 leading-9 text-lg">
+              I am Ahmad Ayaz, a Software Engineering graduate passionate about MERN stack development, AI applications, Python programming, and building scalable web applications.
+            </p>
 
-          <p className="text-gray-300 leading-9 text-lg">
-            Enthusiastic Full-Stack Developer experienced
-            in MERN Stack and Python development.
-            Skilled in building responsive frontend interfaces,
-            scalable backend APIs, MongoDB databases,
-            and AI-powered applications.
-          </p>
+            <div className="grid grid-cols-2 gap-6 mt-10">
 
-          <div className="grid grid-cols-2 gap-6 mt-10">
-            <div className="glass p-6 rounded-2xl">
-              <h3 className="text-4xl font-bold text-cyan-400">
-                10+
-              </h3>
+              <div className="bg-slate-800 p-6 rounded-xl">
+                <h2 className="text-3xl font-bold text-cyan-400">10+</h2>
+                <p>Projects Completed</p>
+              </div>
 
-              <p className="text-gray-300 mt-2">
-                Projects Completed
-              </p>
+              <div className="bg-slate-800 p-6 rounded-xl">
+                <h2 className="text-3xl font-bold text-cyan-400">MERN</h2>
+                <p>Full Stack Developer</p>
+              </div>
+
             </div>
 
-            <div className="glass p-6 rounded-2xl">
-              <h3 className="text-4xl font-bold text-cyan-400">
-                1+
-              </h3>
-
-              <p className="text-gray-300 mt-2">
-                Years Experience
-              </p>
-            </div>
           </div>
-        </motion.div>
+
+        </div>
+
       </div>
+
     </section>
   );
 }

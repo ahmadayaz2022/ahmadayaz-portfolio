@@ -1,83 +1,24 @@
-import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-import "./index.css";
-
-import AuthProvider from "./context/AuthContext";
-import ProtectedRoute from "./routes/ProtectedRoute";
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import Projects from "./pages/Projects";
-import Contact from "./pages/Contact";
 
-import Dashboard from "./pages/admin/Dashboard";
-import AddProject from "./pages/admin/AddProject";
-import ManageProjects from "./pages/admin/ManageProjects";
-import Messages from "./pages/admin/Messages";
-import Profile from "./pages/admin/Profile";
 
 function App() {
   return (
-    <AuthProvider>
-      <BrowserRouter>
-        <Routes>
-          {/* Public Routes */}
-          <Route path="/" element={<Home />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+    <BrowserRouter>
 
-          {/* Admin Protected Routes */}
-          <Route
-            path="/admin"
-            element={
-              <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
-            }
-          />
+      <Routes>
 
-          <Route
-            path="/admin/add-project"
-            element={
-              <ProtectedRoute>
-                <AddProject />
-              </ProtectedRoute>
-            }
-          />
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        s
 
-          <Route
-            path="/admin/manage-projects"
-            element={
-              <ProtectedRoute>
-                <ManageProjects />
-              </ProtectedRoute>
-            }
-          />
+      </Routes>
 
-          <Route
-            path="/admin/messages"
-            element={
-              <ProtectedRoute>
-                <Messages />
-              </ProtectedRoute>
-            }
-          />
-
-          <Route
-            path="/admin/profile"
-            element={
-              <ProtectedRoute>
-                <Profile />
-              </ProtectedRoute>
-            }
-          />
-        </Routes>
-      </BrowserRouter>
-    </AuthProvider>
+    </BrowserRouter>
   );
 }
 

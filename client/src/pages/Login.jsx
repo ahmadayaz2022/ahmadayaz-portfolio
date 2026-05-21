@@ -1,137 +1,77 @@
-import { useContext, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useState } from "react";
 import API from "../services/api";
-import { AuthContext } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+
   const navigate = useNavigate();
-  const { login } = useContext(AuthContext);
 
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-    setError(""); // Clear error when user types
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleSubmit = async (e) => {
+
     e.preventDefault();
-    setLoading(true);
-    setError("");
 
     try {
-      const res = await API.post("/auth/login", formData);
 
-      if (res.data.success) {
-        login(res.data.token, res.data.user);
-        navigate("/admin");
-      }
+      const res = await API.post(
+        "/auth/login",
+        formData
+      );
+
+      localStorage.setItem("token", res.data.token);
+
+      navigate("/dashboard");
+
     } catch (error) {
-      const message =
-        error.response?.data?.message ||
-        "Invalid credentials. Please try again.";
-      setError(message);
-    } finally {
-      setLoading(false);
+      console.log(error);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-950 to-slate-900 px-6">
-      <div className="w-full max-w-md">
-        {/* Header */}
-        <div className="text-center mb-10">
-          <h1 className="text-5xl font-bold mb-2 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-            Admin Login
-          </h1>
-          <p className="text-slate-400">Manage your portfolio</p>
-        </div>
+    <div className="min-h-screen flex justify-center items-center">
 
-        {/* Card */}
-        <form
-          onSubmit={handleSubmit}
-          className="bg-slate-900 p-8 rounded-2xl shadow-2xl border border-slate-800"
-        >
-          {/* Error Message */}
-          {error && (
-            <div className="mb-6 p-4 bg-red-900/20 border border-red-700 rounded-lg text-red-400 text-sm">
-              {error}
-            </div>
-          )}
+      <form
+        onSubmit={handleSubmit}
+        className="bg-slate-800 p-10 rounded-xl w-[400px]"
+      >
 
-          {/* Email Input */}
-          <div className="mb-6">
-            <label htmlFor="email" className="block text-sm font-semibold mb-2 text-slate-300">
-              Email Address
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="admin@example.com"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition"
-              required
-              disabled={loading}
-            />
-          </div>
+        <h1 className="text-3xl font-bold mb-5 text-center">
+          Admin Login
+        </h1>
 
-          {/* Password Input */}
-          <div className="mb-6">
-            <label htmlFor="password" className="block text-sm font-semibold mb-2 text-slate-300">
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="••••••••"
-              value={formData.password}
-              onChange={handleChange}
-              className="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition"
-              required
-              disabled={loading}
-            />
-          </div>
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          onChange={handleChange}
+          className="w-full p-3 mb-4 rounded bg-slate-700"
+        />
 
-          {/* Submit Button */}
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 disabled:opacity-50 disabled:cursor-not-allowed py-3 rounded-lg font-semibold text-white transition duration-200 transform hover:scale-105"
-          >
-            {loading ? "Logging in..." : "Login"}
-          </button>
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          onChange={handleChange}
+          className="w-full p-3 mb-4 rounded bg-slate-700"
+        />
 
-          {/* Signup Link */}
-          <div className="text-center mt-6">
-            <p className="text-slate-400 text-sm">
-              New admin?{" "}
-              <Link
-                to="/signup"
-                className="text-cyan-400 hover:text-cyan-300 font-semibold transition"
-              >
-                Create account
-              </Link>
-            </p>
-          </div>
-        </form>
+        <button className="w-full bg-cyan-500 p-3 rounded">
+          Login
+        </button>
 
-        {/* Footer Note */}
-        <p className="text-center text-slate-500 text-xs mt-6">
-          Only admin can access this area
-        </p>
-      </div>
+      </form>
+
     </div>
   );
 }

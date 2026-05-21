@@ -1,47 +1,54 @@
-const skills = [
-  "HTML",
-  "CSS",
-  "JavaScript",
-  "React.js",
-  "Node.js",
-  "Express.js",
-  "MongoDB",
-  "Python",
-  "Tailwind CSS",
-  "Git",
-  "GitHub",
-  "REST APIs",
-  "Postman",
-  "AI Tools",
-];
+import { useEffect, useState } from "react";
+import API from "../../services/api";
 
 function Skills() {
+
+  const [skills, setSkills] = useState([]);
+
+  useEffect(() => {
+    fetchSkills();
+  }, []);
+
+  const fetchSkills = async () => {
+    const res = await API.get("/skills");
+    setSkills(res.data);
+  };
+
   return (
-    <section className="section-padding">
-      <div className="container-custom">
-        <div className="text-center mb-20">
-          <p className="text-cyan-400 mb-4">
-            MY SKILLS
-          </p>
+    <section id="skills" className="p-10">
 
-          <h2 className="text-5xl font-bold">
-            Technologies I Work With
-          </h2>
-        </div>
+      <h1 className="text-4xl font-bold mb-10 text-center">
+        Skills
+      </h1>
 
-        <div className="flex flex-wrap justify-center gap-5">
-          {skills.map((skill, index) => (
-            <div
-              key={index}
-              className="glass px-8 py-4 rounded-2xl hover:scale-105 transition duration-300"
-            >
-              <p className="text-lg font-semibold">
-                {skill}
-              </p>
+      <div className="grid md:grid-cols-3 gap-6">
+
+        {skills.map((skill) => (
+
+          <div
+            key={skill._id}
+            className="bg-slate-800 p-5 rounded-xl"
+          >
+
+            <h2 className="text-2xl mb-3">
+              {skill.name}
+            </h2>
+
+            <div className="w-full bg-gray-600 rounded-full h-3">
+
+              <div
+                className="bg-cyan-500 h-3 rounded-full"
+                style={{ width: `${skill.percentage}%` }}
+              ></div>
+
             </div>
-          ))}
-        </div>
+
+          </div>
+
+        ))}
+
       </div>
+
     </section>
   );
 }

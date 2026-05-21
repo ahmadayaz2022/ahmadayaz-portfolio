@@ -1,44 +1,72 @@
 const express = require("express");
-const {
-  registerUser,
-  loginUser,
-  getMe,
-  updateProfile,
-  changePassword,
-  logout,
-} = require("../controllers/authController");
-const { protect } = require("../middleware/authMiddleware");
-const {
-  registerValidation,
-  loginValidation,
-  profileValidation,
-  handleValidationErrors,
-} = require("../middleware/validators");
-const { validationResult } = require("express-validator");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+
+const Admin = require("../models/Admin");
 
 const router = express.Router();
 
-// Validation error handler middleware
-const validateRequest = (req, res, next) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({
-      success: false,
-      message: "Validation failed",
-      errors: errors.array(),
+router.post("/signup", async (req, res) => {
+  try {
+    const { name, email, password } = req.body;
+
+    const existingAdmin = await Admin.findOne({ email });
+
+    if (existingAdmin) {
+      return res.status(400).json({
+        message: "Admin Already Exists",
+      });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const admin = await Admin.create({
+      name,
+      email,
+      password: hashedPassword,
     });
+
+    res.status(201).json(admin);
+
+  } catch (error) {
+    res.status(500).json(error);
   }
-  next();
-};
+});
 
-// Public routes
-router.post("/register", registerValidation, validateRequest, registerUser);
-router.post("/login", loginValidation, validateRequest, loginUser);
+router.post("/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
 
-// Protected routes
-router.get("/me", protect, getMe);
-router.put("/profile", protect, profileValidation, validateRequest, updateProfile);
-router.post("/change-password", protect, changePassword);
-router.post("/logout", protect, logout);
+    const admin = await Admin.findOne({ email });
+
+    if (!admin) {
+      return res.status(400).json({
+        message: "Invalid Credentials",
+      });
+    }
+
+    const isMatch = await bcrypt.compare(password, admin.password);
+
+    if (!isMatch) {
+      return res.status(400).json({
+        message: "Invalid Credentials",
+      });
+    }
+
+    const token = jwt.sign(
+      { id: admin._id },
+      process.env.JWT_SECRET,
+      { expiresIn: "7d" }
+    );
+
+    res.json({
+      token,
+      admin,
+    });
+
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
 
 module.exports = router;
