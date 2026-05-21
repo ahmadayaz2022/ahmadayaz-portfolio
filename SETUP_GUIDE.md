@@ -24,13 +24,7 @@ cp .env.example .env
 
 **Configure `.env` file:**
 ```env
-PORT=5000
-NODE_ENV=development
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key_at_least_32_characters_long
-JWT_EXPIRE=7d
-FRONTEND_URL=http://localhost:3000
-ALLOW_MULTIPLE_ADMINS=false
+...
 ```
 
 **Start backend:**
@@ -115,28 +109,14 @@ Expected output:
 6. Replace `<username>` and `<password>` with your credentials
 7. Add to `.env` as `MONGO_URI`
 
-Example:
-```
-mongodb+srv://admin:yourpassword@cluster0.mx2n3vg.mongodb.net/?appName=Cluster0
-```
+
 
 ---
 
 ## 📚 Creating Your First Admin Account
 
 ### Step 1: Navigate to Signup
-1. Open http://localhost:3000/signup
-2. Fill in the registration form:
-   - **Name**: Your name
-   - **Email**: Your email
-   - **Password**: Min 6 chars, with uppercase, lowercase, number
-   - **Confirm Password**: Must match
-
 ### Step 2: Create Account
-1. Click "Create Account"
-2. You'll be automatically logged in
-3. Redirected to dashboard
-
 ---
 
 ## 🎯 First Steps After Setup
