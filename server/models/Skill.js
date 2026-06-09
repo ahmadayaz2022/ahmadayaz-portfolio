@@ -1,8 +1,14 @@
 const mongoose = require("mongoose");
 
 const skillSchema = new mongoose.Schema({
-  name: String,
-  percentage: Number,
+    user:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User"
+    },
+    skillName:{
+        type:String,
+        required:true
+    }
 });
 
 module.exports = mongoose.model("Skill", skillSchema);

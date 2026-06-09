@@ -12,7 +12,7 @@ function About() {
 
           <div>
             <img
-              src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e"
+              src=""
               alt="about"
               className="rounded-2xl"
             />

@@ -140,7 +140,7 @@ function Hero() {
           <img
             src={
               hero?.image ||
-              "https://images.unsplash.com/photo-1500648767791-00dcc994a43e"
+              ""
             }
             alt="hero"
             className="w-[400px] h-[400px] object-cover rounded-full border-4 border-cyan-500 shadow-2xl"
