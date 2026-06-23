@@ -1,3 +1,9 @@
+/* =============================================
+   AHMAD AYAZ — PORTFOLIO JS
+   Particles · Typewriter · Scroll Effects · Nav · Form
+   ============================================= */
+
+/* ── PARTICLE BACKGROUND ── */
 (function initParticles() {
   const canvas = document.getElementById('particles-canvas');
   if (!canvas) return;
@@ -235,6 +241,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 /* ── CONTACT FORM ── */
 (function initForm() {
+
+  const EMAILJS_PUBLIC_KEY  = '9X8v86YB__7Gc2nyw';
+  const EMAILJS_SERVICE_ID  = 'service_tb40l7j ';
+  const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+
   const form    = document.getElementById('contact-form');
   const msgBox  = document.getElementById('form-message');
   const submitBtn = document.getElementById('submit-btn');
