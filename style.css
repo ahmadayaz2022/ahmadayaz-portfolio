@@ -1100,6 +1100,149 @@ code { font-family: inherit; }
   .section { padding: 4rem 0; }
 }
 
+/* ── DOWNLOAD RESUME BUTTON (hero) ── */
+.btn-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.75rem;
+  background: transparent;
+  color: var(--accent-2);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--accent-2);
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-download::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent-2);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.btn-download:hover {
+  color: var(--bg);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0, 212, 170, 0.35);
+}
+
+.btn-download:hover::before { opacity: 1; }
+
+.btn-download svg,
+.btn-download span { position: relative; z-index: 1; }
+
+.btn-download svg { width: 18px; height: 18px; }
+
+.btn-download:active { transform: translateY(0); }
+
+/* ── NAV RESUME BUTTON ── */
+.nav-resume-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 1rem;
+  background: rgba(0, 212, 170, 0.08);
+  color: var(--accent-2);
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(0, 212, 170, 0.3);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.nav-resume-btn svg { width: 15px; height: 15px; }
+
+.nav-resume-btn:hover {
+  background: rgba(0, 212, 170, 0.18);
+  border-color: var(--accent-2);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 212, 170, 0.2);
+}
+
+/* ── FLOATING ACTION BUTTON ── */
+.resume-fab {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.4rem 0.85rem 1.1rem;
+  background: var(--accent-2);
+  color: var(--bg);
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  box-shadow: 0 6px 28px rgba(0, 212, 170, 0.45);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.3s ease;
+  opacity: 0;
+  transform: translateY(16px) scale(0.95);
+  pointer-events: none;
+}
+
+.resume-fab.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: all;
+}
+
+.resume-fab:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 10px 36px rgba(0, 212, 170, 0.55);
+}
+
+.resume-fab:active { transform: translateY(0) scale(0.98); }
+
+.resume-fab svg { width: 18px; height: 18px; }
+
+.fab-label { line-height: 1; }
+
+/* ── DOWNLOAD TOAST ── */
+.download-toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.9rem 1.5rem;
+  background: var(--bg-card-2);
+  border: 1px solid rgba(0, 212, 170, 0.35);
+  border-radius: 100px;
+  color: var(--accent-2);
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-family: var(--font-display);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.download-toast svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+.download-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
 /* ── REDUCED MOTION ── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.1ms !important; }

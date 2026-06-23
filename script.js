@@ -1,9 +1,3 @@
-/* =============================================
-   AHMAD AYAZ — PORTFOLIO JS
-   Particles · Typewriter · Scroll Effects · Nav · Form
-   ============================================= */
-
-/* ── PARTICLE BACKGROUND ── */
 (function initParticles() {
   const canvas = document.getElementById('particles-canvas');
   if (!canvas) return;
@@ -321,6 +315,63 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   document.addEventListener('mousemove', e => {
     glow.style.left = e.clientX + 'px';
     glow.style.top  = e.clientY + 'px';
+  });
+})();
+
+/* ── RESUME DOWNLOAD ── */
+(function initResumeDownload() {
+  // All download trigger elements
+  const triggers = [
+    document.getElementById('download-resume-btn'),
+    document.getElementById('nav-resume-btn'),
+    document.getElementById('resume-fab'),
+  ].filter(Boolean);
+
+  const toast = document.getElementById('download-toast');
+  const fab   = document.getElementById('resume-fab');
+
+  // Show FAB after scrolling past hero
+  const hero = document.getElementById('hero');
+  if (fab && hero) {
+    const heroObserver = new IntersectionObserver(
+      ([entry]) => {
+        fab.classList.toggle('visible', !entry.isIntersecting);
+      },
+      { threshold: 0.2 }
+    );
+    heroObserver.observe(hero);
+  }
+
+  function showToast() {
+    if (!toast) return;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3200);
+  }
+
+  function downloadResume() {
+    /*
+      HOW TO USE YOUR ACTUAL PDF:
+      1. Place your resume PDF (e.g. "AhmadAyaz_Resume.pdf") in the same
+         folder as index.html, style.css, and script.js.
+      2. Change the `resumePath` variable below to match the filename.
+      3. That's it — the button will download it with the correct name.
+    */
+    const resumePath     = 'AhmadAyaz_Resume.pdf';  // ← your PDF filename here
+    const downloadName   = 'AhmadAyaz_Resume.pdf';
+
+    const link = document.createElement('a');
+    link.href     = resumePath;
+    link.download = downloadName;
+    link.rel      = 'noopener';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    showToast();
+  }
+
+  triggers.forEach(btn => {
+    btn.addEventListener('click', downloadResume);
   });
 })();
 
